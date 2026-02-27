@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAR-G · What the surface can't show.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav id="nav" class="on-dark">
+    <div class="nav-logo">SAR<span>-G</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problem" data-section="problem">Problem</a></li>
+      <li><a href="#silo-section" data-section="silo-section">Heatmap</a></li>
+      <li><a href="#how-it-works" data-section="how-it-works">Solution</a></li>
+      <li><a href="#competitive" data-section="competitive">Matrix</a></li>
+      <li><a href="#market" data-section="market">Market</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Deploy
+      SAR-G</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-particles-bg"><canvas id="heroParticles"></canvas></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Autonomous Grain-Silo Intelligence</div>
+      <h1 class="hero-title">SAR<span class="g-accent">-G</span></h1>
+      <p class="hero-tagline">What the surface can't show.</p>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat hero-stat-1">
+        <div class="stat-label">Wheat imported</div>
+        <div class="stat-value">97%</div>
+        <div class="stat-unit">of Jordan's wheat supply</div>
+      </div>
+      <div class="hero-stat hero-stat-2">
+        <div class="stat-label">Post-harvest loss</div>
+        <div class="stat-value">6.65%</div>
+        <div class="stat-unit">annual grain spoilage</div>
+      </div>
+      <div class="hero-stat hero-stat-3">
+        <div class="stat-label">Annual cost</div>
+        <div class="stat-value">$11.6M</div>
+        <div class="stat-unit">economic loss per year</div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TICKER ═══════════ -->
+  <div id="ticker">
+    <div class="ticker-track">
+      <span>DEPLOY</span><span class="dot">·</span>
+      <span>DETECT</span><span class="dot">·</span>
+      <span>RESPOND</span><span class="dot">·</span>
+      <span>AUTONOMOUS</span><span class="dot">·</span>
+      <span>CABLE-FREE</span><span class="dot">·</span>
+      <span>MENA</span><span class="dot">·</span>
+      <span>CO₂ SENSING</span><span class="dot">·</span>
+      <span>PRECISION FUMIGATION</span><span class="dot">·</span>
+      <span>DEPLOY</span><span class="dot">·</span>
+      <span>DETECT</span><span class="dot">·</span>
+      <span>RESPOND</span><span class="dot">·</span>
+      <span>AUTONOMOUS</span><span class="dot">·</span>
+      <span>CABLE-FREE</span><span class="dot">·</span>
+      <span>MENA</span><span class="dot">·</span>
+      <span>CO₂ SENSING</span><span class="dot">·</span>
+      <span>PRECISION FUMIGATION</span><span class="dot">·</span>
+      <span>DEPLOY</span><span class="dot">·</span>
+      <span>DETECT</span><span class="dot">·</span>
+      <span>RESPOND</span><span class="dot">·</span>
+      <span>AUTONOMOUS</span><span class="dot">·</span>
+      <span>CABLE-FREE</span><span class="dot">·</span>
+      <span>MENA</span><span class="dot">·</span>
+      <span>CO₂ SENSING</span><span class="dot">·</span>
+      <span>PRECISION FUMIGATION</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ THE PROBLEM ═══════════ -->
+  <section id="problem">
+    <div class="problem-grid">
+      <div class="problem-left">
+        <div class="section-eyebrow fade-up">The Problem</div>
+        <h2 class="section-title fade-up">Jordan's grain is<br>disappearing silently.</h2>
+        <p class="section-desc fade-up">Jordan imports 97% of its wheat — over one million tonnes annually — and stores
+          it across aging steel silos with no internal monitoring. Grain spoils silently from the inside out. By the
+          time surface inspectors detect damage, entire silo chambers are lost.</p>
+
+        <div class="stat-cards">
+          <div class="stat-card fade-up">
+            <div class="card-value"><span class="counter" data-target="97" data-suffix="%">0</span></div>
+            <div class="card-label">Wheat imported</div>
+            <div class="card-detail">Near-total import dependency</div>
+          </div>
+          <div class="stat-card fade-up">
+            <div class="card-value"><span class="counter" data-target="6.65" data-suffix="%" data-decimals="2">0</span>
+            </div>
+            <div class="card-label">Post-harvest loss</div>
+            <div class="card-detail">Spoilage during storage</div>
+          </div>
+          <div class="stat-card fade-up">
+            <div class="card-value">$<span class="counter" data-target="11.6" data-suffix="M" data-decimals="1">0</span>
+            </div>
+            <div class="card-label">Annual loss</div>
+            <div class="card-detail">Economic cost to Jordan</div>
+          </div>
+          <div class="stat-card fade-up">
+            <div class="card-value"><span class="counter" data-target="0" data-suffix="">0</span></div>
+            <div class="card-label">Internal sensors</div>
+            <div class="card-detail">Zero visibility inside grain mass</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-right">
+        <div class="wheat-chain fade-up">
+          <div class="chain-node">
+            <div class="node-title">Import &amp; Arrival</div>
+            <div class="node-desc">1M+ tonnes of wheat arrive by sea annually into Aqaba port</div>
+          </div>
+          <div class="chain-node">
+            <div class="node-title">Silo Storage</div>
+            <div class="node-desc">Grain enters steel silos — some over 40 years old — for strategic reserve</div>
+          </div>
+          <div class="chain-node warning">
+            <div class="node-title">Moisture Ingress</div>
+            <div class="node-desc">Rain, condensation, and structural leaks create wet pockets deep in grain</div>
+            <div class="node-loss">&#9650; Spoilage risk begins</div>
+          </div>
+          <div class="chain-node loss">
+            <div class="node-title">Microbial Growth</div>
+            <div class="node-desc">Fungi and bacteria multiply in warm, moist zones — CO₂ spikes to 2000+ ppm</div>
+            <div class="node-loss">&#9650; CO₂ rises — invisible from surface</div>
+          </div>
+          <div class="chain-node loss">
+            <div class="node-title">Insect Infestation</div>
+            <div class="node-desc">Khapra beetle and grain weevils colonize compromised grain at up to 40°C</div>
+            <div class="node-loss">&#9650; 2–5% additional loss per cycle</div>
+          </div>
+          <div class="chain-node">
+            <div class="node-title">Surface Detection</div>
+            <div class="node-desc">Manual inspection detects damage only after it reaches the surface — far too late
+            </div>
+          </div>
+          <div class="chain-node">
+            <div class="node-title">Total Chamber Loss</div>
+            <div class="node-desc">Entire silo chambers condemned. Grain dumped. National food security weakened.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 3D SILO HEATMAP ═══════════ -->
+  <section id="silo-section">
+    <div class="silo-header">
+      <div class="section-eyebrow fade-up">Live Silo Intelligence</div>
+      <h2 class="section-title fade-up">3D Grain Heatmap</h2>
+      <p class="section-desc fade-up">Real-time volumetric CO₂ mapping inside a grain silo. Drag to rotate. Watch the
+        probe navigate and remediate.</p>
+    </div>
+
+    <div class="silo-controls fade-up">
+      <button class="silo-btn active" data-view="heatmap">Heatmap View</button>
+      <button class="silo-btn" data-view="normal">Normal View</button>
+      <button class="silo-btn" data-view="probe">Probe Path View</button>
+    </div>
+
+    <div class="silo-container fade-up">
+      <div id="silo-canvas-container"></div>
+      <div class="silo-panel">
+        <div class="panel-header">Sensor Readings</div>
+        <div class="panel-reading">
+          <div class="reading-label">CO₂ concentration</div>
+          <div class="reading-value safe" id="co2Value">420 ppm</div>
+          <div class="reading-bar">
+            <div class="reading-bar-fill" id="co2Bar" style="width:8%;background:var(--safe-green)"></div>
+          </div>
+        </div>
+        <div class="panel-reading">
+          <div class="reading-label">Relative humidity</div>
+          <div class="reading-value safe" id="rhValue">14.2%</div>
+          <div class="reading-bar">
+            <div class="reading-bar-fill" id="rhBar" style="width:14%;background:var(--safe-green)"></div>
+          </div>
+        </div>
+        <div class="panel-reading">
+          <div class="reading-label">Temperature</div>
+          <div class="reading-value safe" id="tempValue">26.1°C</div>
+          <div class="reading-bar">
+            <div class="reading-bar-fill" id="tempBar" style="width:43%;background:var(--safe-green)"></div>
+          </div>
+        </div>
+        <div class="panel-reading">
+          <div class="reading-label">Grain depth</div>
+          <div class="reading-value" id="depthValue" style="color:var(--bg-cream)">4.2m</div>
+          <div class="reading-bar">
+            <div class="reading-bar-fill" id="depthBar" style="width:42%;background:rgba(247,245,240,0.25)"></div>
+          </div>
+        </div>
+        <div class="probe-status">
+          <div class="ps-label">Probe Status</div>
+          <div class="ps-value" id="probeStatus">Navigating — Safe Zone</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="silo-legend fade-up">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--safe-green)"></div> Safe (400–800 ppm)
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--warning-yellow)"></div> Warning (800–2000 ppm)
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--danger-red)"></div> Danger (2000–5000 ppm)
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--probe-blue)"></div> SAR-G Probe
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ HOW IT WORKS ═══════════ -->
+  <section id="how-it-works">
+    <div class="section-eyebrow fade-up">The Solution</div>
+    <h2 class="section-title fade-up">How SAR-G Works</h2>
+    <p class="section-desc fade-up">A fully autonomous cycle — from deployment to treatment report — with zero human
+      entry into the silo.</p>
+
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M6 30c4-4 8-4 12 0s8 4 12 0 8-4 12 0" />
+            <path d="M6 22c4-4 8-4 12 0s8 4 12 0 8-4 12 0" opacity="0.4" />
+            <circle cx="24" cy="14" r="5" />
+            <path d="M24 19v6" />
+          </svg>
+        </div>
+        <div class="step-title">Swims</div>
+        <div class="step-desc">SAR-G is deployed from the silo top hatch. Using counter-rotating augers, it swims
+          downward through the grain mass — reaching depths of 10m+ without cables.</div>
+        <div class="step-tech">AUGER PROPULSION · 10M DEPTH · CABLE-FREE · GPS-DENIED NAV</div>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="18" />
+            <circle cx="24" cy="24" r="12" opacity="0.5" />
+            <circle cx="24" cy="24" r="6" opacity="0.3" />
+            <circle cx="24" cy="24" r="2.5" style="fill:var(--brand-green);stroke:none" />
+            <path d="M24 6v4M24 38v4M6 24h4M38 24h4" />
+          </svg>
+        </div>
+        <div class="step-title">Detects</div>
+        <div class="step-desc">Onboard sensors continuously measure CO₂, relative humidity, and temperature. The probe
+          builds a real-time 3D heatmap of spoilage zones invisible from the surface.</div>
+        <div class="step-tech">CO₂ NDIR SENSOR · RH/T · 3D VOLUMETRIC MAPPING · REAL-TIME</div>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M24 6C24 6 10 22 10 30a14 14 0 0028 0C38 22 24 6 24 6z" />
+            <circle cx="20" cy="28" r="2" opacity="0.4" />
+            <circle cx="28" cy="32" r="1.5" opacity="0.3" />
+          </svg>
+        </div>
+        <div class="step-title">Responds</div>
+        <div class="step-desc">Upon detecting a spoilage hotspot (CO₂ &gt; 2000 ppm), SAR-G activates precision
+          phosphine micro-fumigation — treating only the affected zone, not the entire silo.</div>
+        <div class="step-tech">PHOSPHINE MICRO-DOSE · PRECISION TARGETING · 90% CHEMICAL REDUCTION</div>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 48 48">
+            <rect x="8" y="6" width="32" height="36" rx="2" />
+            <path d="M14 32V24" />
+            <path d="M21 32V20" />
+            <path d="M28 32V26" />
+            <path d="M35 32V16" />
+            <path d="M14 14h20" opacity="0.3" />
+          </svg>
+        </div>
+        <div class="step-title">Reports</div>
+        <div class="step-desc">All data is transmitted wirelessly to a cloud dashboard. Silo operators receive
+          zone-level reports, treatment logs, and predictive spoilage risk scores.</div>
+        <div class="step-tech">WIRELESS UPLINK · CLOUD DASHBOARD · PREDICTIVE ANALYTICS · API</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ COMPETITIVE MATRIX ═══════════ -->
+  <section id="competitive">
+    <div class="section-eyebrow fade-up">Competitive Landscape</div>
+    <h2 class="section-title fade-up">Why SAR-G Wins</h2>
+    <p class="section-desc fade-up">No existing product moves through grain, senses spoilage, and treats it — all
+      autonomously.</p>
+
+    <div class="matrix-wrapper fade-up">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="sarg-col">SAR-G</th>
+            <th>Crover</th>
+            <th>TeleSense</th>
+            <th>OPI Systems</th>
+            <th>Manual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Moves through grain</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Cable-free operation</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Full 3D coverage</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+            <td><span class="cross">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>CO₂ sensing</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Active treatment</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+          </tr>
+          <tr>
+            <td>MENA focus</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Autonomous</td>
+            <td class="sarg-col"><span class="check">&#10003;</span></td>
+            <td><span class="partial">PARTIAL</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+            <td><span class="cross">&#10007;</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRODUCT LINE ═══════════ -->
+  <section id="product-line">
+    <div class="section-eyebrow fade-up">Product Ecosystem</div>
+    <h2 class="section-title fade-up">The SAR Platform</h2>
+    <p class="section-desc fade-up">SAR-G is the first in a family of autonomous storage intelligence robots.</p>
+
+    <div class="product-grid">
+      <div class="product-card active fade-up">
+        <div class="product-name">SAR-G</div>
+        <div class="product-subtitle">Grain</div>
+        <div class="product-full">Autonomous grain-silo spoilage detection and precision fumigation robot</div>
+      </div>
+      <div class="product-card coming-soon fade-up">
+        <div class="product-name">SAR-C</div>
+        <div class="product-subtitle">Cement</div>
+        <div class="product-full">Moisture and hardening detection for cement silos</div>
+      </div>
+      <div class="product-card coming-soon fade-up">
+        <div class="product-name">SAR-F</div>
+        <div class="product-subtitle">Feed</div>
+        <div class="product-full">Animal feed contamination and mycotoxin monitoring</div>
+      </div>
+      <div class="product-card coming-soon fade-up">
+        <div class="product-name">SAR-S</div>
+        <div class="product-subtitle">Seed</div>
+        <div class="product-full">Seed bank viability and germination rate monitoring</div>
+      </div>
+      <div class="product-card coming-soon fade-up">
+        <div class="product-name">SAR-R</div>
+        <div class="product-subtitle">Rice</div>
+        <div class="product-full">Paddy storage spoilage detection and treatment</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MARKET ═══════════ -->
+  <section id="market">
+    <div class="section-eyebrow fade-up">Market Opportunity</div>
+    <h2 class="section-title fade-up">The Numbers</h2>
+
+    <div class="market-cards">
+      <div class="market-card fade-up">
+        <div class="market-label">TAM — Total Addressable Market</div>
+        <div class="market-value">$<span class="counter" data-target="2.9" data-suffix="B" data-decimals="1">0</span>
+        </div>
+        <div class="market-unit">Global grain storage tech</div>
+        <div class="market-desc">Worldwide demand for post-harvest grain monitoring and loss prevention across all
+          storage types</div>
+      </div>
+      <div class="market-card fade-up">
+        <div class="market-label">SAM — Serviceable Addressable Market</div>
+        <div class="market-value">$<span class="counter" data-target="380" data-suffix="M">0</span></div>
+        <div class="market-unit">MENA region silo storage</div>
+        <div class="market-desc">Addressable market within the MENA region's steel silo infrastructure and food security
+          programs</div>
+      </div>
+      <div class="market-card fade-up">
+        <div class="market-label">SOM — Serviceable Obtainable Market</div>
+        <div class="market-value">$<span class="counter" data-target="4.2" data-suffix="M" data-decimals="1">0</span>
+        </div>
+        <div class="market-unit">Jordan — Year 1</div>
+        <div class="market-desc">Pilot deployment across Jordan's national grain storage network — Aqaba and Amman
+          facilities</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA ═══════════ -->
+  <section id="cta">
+    <div class="cta-watermark">SAR-G</div>
+    <div class="cta-content fade-up">
+      <div class="section-eyebrow">Ready to Deploy</div>
+      <h2 class="cta-title">See what's inside<br>your grain.</h2>
+      <p class="cta-desc">Join the next generation of autonomous grain intelligence. SAR-G is ready for pilot deployment
+        in Jordanian silos.</p>
+      <button class="cta-button"><span>Deploy SAR-G</span></button>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="footer-left">&copy; 2026 SAR-G &middot; Silos Autonomous Robot — Grain</div>
+    <div class="footer-right">Amman, Jordan &middot; MENA</div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════ -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
