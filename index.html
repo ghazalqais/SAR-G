@@ -43,6 +43,12 @@
 
   <!-- ═══════════ HERO ═══════════ -->
   <section id="hero">
+    <!-- Grain photo fills the hero -->
+    <img src="a-photorealistic-extreme-close-up-photog_VOEpFkVlQGCDigbfGM-Upw_euGhgZWER8iJ9TROWClwwg_sd.jpeg"
+         alt="" class="hero-bg-img">
+    <!-- Greenish gradient over the photo -->
+    <div class="hero-img-overlay"></div>
+
     <div class="hero-noise"></div>
     <div class="hero-particles-bg"><canvas id="heroParticles"></canvas></div>
     <div class="hero-glow"></div>
@@ -198,7 +204,13 @@
     </div>
 
     <div class="silo-container fade-up">
-      <div id="silo-canvas-container"></div>
+      <div id="silo-canvas-container">
+        <div class="silo-interact-overlay" id="siloOverlay">
+          <span class="silo-interact-icon">&#8635;</span>
+          <span class="silo-interact-label">Tap to interact</span>
+        </div>
+        <button class="silo-interact-exit" id="siloExit">Done</button>
+      </div>
       <div class="silo-panel">
         <div class="panel-header">Sensor Readings</div>
         <div class="panel-reading">
@@ -323,6 +335,32 @@
         <div class="step-tech">WIRELESS UPLINK · CLOUD DASHBOARD · PREDICTIVE ANALYTICS · API</div>
       </div>
     </div>
+
+    <!-- Prototype video -->
+    <div class="proto-section fade-up">
+
+      <div class="proto-heading-row">
+        <div>
+          <div class="proto-eyebrow">&#9679; Hardware Prototype</div>
+          <h2 class="proto-heading">The Hardware.</h2>
+        </div>
+        <p class="proto-sub">Real auger propulsion.<br>Real grain. Real depth.</p>
+      </div>
+
+      <div class="proto-vid-wrap">
+        <video class="proto-vid" autoplay muted loop playsinline>
+          <source src="prototype-v2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="proto-footer-bar">
+        <div class="proto-stat"><span>Material</span>3D-printed chassis</div>
+        <div class="proto-stat"><span>Auger speed</span>400 RPM</div>
+        <div class="proto-stat"><span>Target depth</span>10 m</div>
+        <div class="proto-stat"><span>Location</span>Jordan · 2026</div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ═══════════ COMPETITIVE MATRIX ═══════════ -->

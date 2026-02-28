@@ -22,7 +22,7 @@ document.querySelectorAll('a, button, .stat-card, .step-card, .product-card, .ma
   el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
 });
 
-if ('ontouchstart' in window) {
+if (window.matchMedia('(pointer: coarse)').matches) {
   dot.style.display = 'none';
   ring.style.display = 'none';
   document.body.style.cursor = 'auto';
@@ -37,6 +37,7 @@ navToggle.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('mobile-open');
   navToggle.classList.toggle('open', isOpen);
   nav.classList.toggle('force-light', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
 navLinks.querySelectorAll('a').forEach(a => {
@@ -44,6 +45,7 @@ navLinks.querySelectorAll('a').forEach(a => {
     navLinks.classList.remove('mobile-open');
     navToggle.classList.remove('open');
     nav.classList.remove('force-light');
+    document.body.style.overflow = '';
   });
 });
 
@@ -88,6 +90,39 @@ function updateNav() {
 }
 window.addEventListener('scroll', updateNav);
 updateNav();
+
+/* ─── RESIZE: keep JS state in sync with CSS breakpoints ─── */
+function handleResize() {
+  // Close mobile nav if viewport is now desktop-wide
+  if (window.innerWidth > 768) {
+    navLinks.classList.remove('mobile-open');
+    navToggle.classList.remove('open');
+    nav.classList.remove('force-light');
+    document.body.style.overflow = '';
+  }
+
+  // Re-evaluate nav background on new viewport size
+  updateNav();
+
+  // Show/hide cursor elements based on actual pointer capability
+  const hasCoarse = window.matchMedia('(pointer: coarse)').matches;
+  if (dot && ring) {
+    dot.style.display  = hasCoarse ? 'none' : '';
+    ring.style.display = hasCoarse ? 'none' : '';
+    document.body.style.cursor = hasCoarse ? 'auto' : '';
+  }
+}
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(handleResize, 150);
+});
+window.addEventListener('orientationchange', () => {
+  // orientationchange needs a longer settle time for the browser to reflow
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(handleResize, 300);
+});
 
 /* ─── ACTIVE NAV LINK ─── */
 const sections = document.querySelectorAll('section[id]');
@@ -615,9 +650,44 @@ document.querySelectorAll('.silo-btn').forEach(btn => {
   }
   animate();
 
-  window.addEventListener('resize', () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
+  /* ── TOUCH INTERACTION OVERLAY ── */
+  const overlay = document.getElementById('siloOverlay');
+  const exitBtn = document.getElementById('siloExit');
+
+  function setTouchControls(active) {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouch) {
+      // Desktop: always enable, no overlay needed
+      controls.enableRotate = true;
+      controls.enableZoom   = true;
+      renderer.domElement.style.touchAction = 'none';
+      container.classList.remove('touch-active');
+      return;
+    }
+    controls.enableRotate = active;
+    controls.enableZoom   = active;
+    controls.enablePan    = false;
+    renderer.domElement.style.touchAction = active ? 'none' : 'pan-y';
+    container.classList.toggle('touch-active', active);
+  }
+
+  setTouchControls(false);
+
+  overlay.addEventListener('click', () => setTouchControls(true));
+  exitBtn.addEventListener('click', () => setTouchControls(false));
+
+  // ResizeObserver fires AFTER the browser has relaid out with new CSS,
+  // so container.clientWidth/Height are already correct for the new breakpoint.
+  const siloResizeObserver = new ResizeObserver(() => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (w === 0 || h === 0) return; // guard against hidden/collapsed state
+    camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(w, h);
+    // Reset touch state based on current pointer type
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    setTouchControls(!isTouch);
   });
+  siloResizeObserver.observe(container);
 })();
