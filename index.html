@@ -31,11 +31,9 @@
       <li><a href="#problem" data-section="problem">Problem</a></li>
       <li><a href="#silo-section" data-section="silo-section">Heatmap</a></li>
       <li><a href="#how-it-works" data-section="how-it-works">Solution</a></li>
-      <li><a href="#competitive" data-section="competitive">Matrix</a></li>
       <li><a href="#market" data-section="market">Market</a></li>
     </ul>
-    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Deploy
-      SAR-G</button>
+    <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Deploy SAR-G</button>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -55,19 +53,19 @@
 
     <div class="hero-stats">
       <div class="hero-stat hero-stat-1">
-        <div class="stat-label">Wheat imported</div>
-        <div class="stat-value">97%</div>
-        <div class="stat-unit">of Jordan's wheat supply</div>
+        <div class="stat-label">Annual economic loss</div>
+        <div class="stat-value">$936B</div>
+        <div class="stat-unit">annual global grain loss</div>
       </div>
       <div class="hero-stat hero-stat-2">
-        <div class="stat-label">Post-harvest loss</div>
-        <div class="stat-value">6.65%</div>
-        <div class="stat-unit">annual grain spoilage</div>
+        <div class="stat-label">Scale of the problem</div>
+        <div class="stat-value">1.3BN</div>
+        <div class="stat-unit">tonnes lost in storage</div>
       </div>
       <div class="hero-stat hero-stat-3">
-        <div class="stat-label">Annual cost</div>
-        <div class="stat-value">$11.6M</div>
-        <div class="stat-unit">economic loss per year</div>
+        <div class="stat-label">Post-harvest loss rate</div>
+        <div class="stat-value">6–11%</div>
+        <div class="stat-unit">spoils during storage</div>
       </div>
     </div>
 
@@ -112,16 +110,14 @@
     <div class="problem-grid">
       <div class="problem-left">
         <div class="section-eyebrow fade-up">The Problem</div>
-        <h2 class="section-title fade-up">Jordan's grain is<br>disappearing silently.</h2>
-        <p class="section-desc fade-up">Jordan imports 97% of its wheat — over one million tonnes annually — and stores
-          it across aging steel silos with no internal monitoring. Grain spoils silently from the inside out. By the
-          time surface inspectors detect damage, entire silo chambers are lost.</p>
+        <h2 class="section-title fade-up">The world solved farming.<br>It never solved storage.</h2>
+        <p class="section-desc fade-up">Grain is 50% of global caloric intake. Every year, 1.3 billion tonnes are lost — not in fields, but in storage. Silently. Invisibly. From the inside out.</p>
 
         <div class="stat-cards">
           <div class="stat-card fade-up">
-            <div class="card-value"><span class="counter" data-target="97" data-suffix="%">0</span></div>
-            <div class="card-label">Wheat imported</div>
-            <div class="card-detail">Near-total import dependency</div>
+            <div class="card-value">$<span class="counter" data-target="936" data-suffix="B">0</span></div>
+            <div class="card-label">Annual global grain loss</div>
+            <div class="card-detail">Economic cost of storage failure</div>
           </div>
           <div class="stat-card fade-up">
             <div class="card-value"><span class="counter" data-target="6.65" data-suffix="%" data-decimals="2">0</span>
@@ -130,10 +126,9 @@
             <div class="card-detail">Spoilage during storage</div>
           </div>
           <div class="stat-card fade-up">
-            <div class="card-value">$<span class="counter" data-target="11.6" data-suffix="M" data-decimals="1">0</span>
-            </div>
-            <div class="card-label">Annual loss</div>
-            <div class="card-detail">Economic cost to Jordan</div>
+            <div class="card-value">1.3<span style="font-size:0.75em">BN t</span></div>
+            <div class="card-label">Lost in storage yearly</div>
+            <div class="card-detail">Not in fields — in silos</div>
           </div>
           <div class="stat-card fade-up">
             <div class="card-value"><span class="counter" data-target="0" data-suffix="">0</span></div>
@@ -146,12 +141,12 @@
       <div class="problem-right">
         <div class="wheat-chain fade-up">
           <div class="chain-node">
-            <div class="node-title">Import &amp; Arrival</div>
-            <div class="node-desc">1M+ tonnes of wheat arrive by sea annually into Aqaba port</div>
+            <div class="node-title">Global Arrival</div>
+            <div class="node-desc">Grain arrives at storage facilities worldwide — ports, inland elevators, and national reserves</div>
           </div>
           <div class="chain-node">
             <div class="node-title">Silo Storage</div>
-            <div class="node-desc">Grain enters steel silos — some over 40 years old — for strategic reserve</div>
+            <div class="node-desc">Grain enters steel silos across 80+ countries — some over 40 years old — for strategic reserve</div>
           </div>
           <div class="chain-node warning">
             <div class="node-title">Moisture Ingress</div>
@@ -351,127 +346,13 @@
         <div class="proto-stat"><span>Material</span>3D-printed chassis</div>
         <div class="proto-stat"><span>Auger speed</span>400 RPM</div>
         <div class="proto-stat"><span>Target depth</span>10 m</div>
-        <div class="proto-stat"><span>Location</span>Jordan · 2026</div>
+        <div class="proto-stat"><span>Location</span>Global · 2026</div>
       </div>
     </div>
 
   </section>
 
-  <!-- ═══════════ COMPETITIVE MATRIX ═══════════ -->
-  <section id="competitive">
-    <div class="section-eyebrow fade-up">Competitive Landscape</div>
-    <h2 class="section-title fade-up">Why SAR-G Wins</h2>
-    <p class="section-desc fade-up">No existing product moves through grain, senses spoilage, and treats it — all
-      autonomously.</p>
 
-    <div class="matrix-wrapper fade-up">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th>Capability</th>
-            <th class="sarg-col">SAR-G</th>
-            <th>Crover</th>
-            <th>TeleSense</th>
-            <th>OPI Systems</th>
-            <th>Manual</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Moves through grain</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="check">&#10003;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-          </tr>
-          <tr>
-            <td>Cable-free operation</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="check">&#10003;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td>Full 3D coverage</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-            <td><span class="cross">&#10007;</span></td>
-          </tr>
-          <tr>
-            <td>CO₂ sensing</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-          </tr>
-          <tr>
-            <td>Active treatment</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-          </tr>
-          <tr>
-            <td>MENA focus</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="check">&#10003;</span></td>
-          </tr>
-          <tr>
-            <td>Autonomous</td>
-            <td class="sarg-col"><span class="check">&#10003;</span></td>
-            <td><span class="partial">PARTIAL</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-            <td><span class="cross">&#10007;</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ═══════════ PRODUCT LINE ═══════════ -->
-  <section id="product-line">
-    <div class="section-eyebrow fade-up">Product Ecosystem</div>
-    <h2 class="section-title fade-up">The SAR Platform</h2>
-    <p class="section-desc fade-up">SAR-G is the first in a family of autonomous storage intelligence robots.</p>
-
-    <div class="product-grid">
-      <div class="product-card active fade-up">
-        <div class="product-name">SAR-G</div>
-        <div class="product-subtitle">Grain</div>
-        <div class="product-full">Autonomous grain-silo spoilage detection and precision fumigation robot</div>
-      </div>
-      <div class="product-card coming-soon fade-up">
-        <div class="product-name">SAR-C</div>
-        <div class="product-subtitle">Cement</div>
-        <div class="product-full">Moisture and hardening detection for cement silos</div>
-      </div>
-      <div class="product-card coming-soon fade-up">
-        <div class="product-name">SAR-F</div>
-        <div class="product-subtitle">Feed</div>
-        <div class="product-full">Animal feed contamination and mycotoxin monitoring</div>
-      </div>
-      <div class="product-card coming-soon fade-up">
-        <div class="product-name">SAR-S</div>
-        <div class="product-subtitle">Seed</div>
-        <div class="product-full">Seed bank viability and germination rate monitoring</div>
-      </div>
-      <div class="product-card coming-soon fade-up">
-        <div class="product-name">SAR-R</div>
-        <div class="product-subtitle">Rice</div>
-        <div class="product-full">Paddy storage spoilage detection and treatment</div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════ MARKET ═══════════ -->
   <section id="market">
@@ -488,19 +369,17 @@
           storage types</div>
       </div>
       <div class="market-card fade-up">
-        <div class="market-label">SAM — Serviceable Addressable Market</div>
-        <div class="market-value">$<span class="counter" data-target="380" data-suffix="M">0</span></div>
-        <div class="market-unit">MENA region silo storage</div>
-        <div class="market-desc">Addressable market within the MENA region's steel silo infrastructure and food security
-          programs</div>
+        <div class="market-label">SAM — US Grain Storage Market</div>
+        <div class="market-value">$<span class="counter" data-target="580" data-suffix="M">0</span></div>
+        <div class="market-unit">US grain storage market</div>
+        <div class="market-desc">8,000+ grain elevators across the US Midwest</div>
       </div>
       <div class="market-card fade-up">
-        <div class="market-label">SOM — Serviceable Obtainable Market</div>
+        <div class="market-label">SOM — Year 1 Target</div>
         <div class="market-value">$<span class="counter" data-target="4.2" data-suffix="M" data-decimals="1">0</span>
         </div>
-        <div class="market-unit">Jordan — Year 1</div>
-        <div class="market-desc">Pilot deployment across Jordan's national grain storage network — Aqaba and Amman
-          facilities</div>
+        <div class="market-unit">Year 1 target</div>
+        <div class="market-desc">500 facilities across Kansas, Nebraska, Iowa, and Illinois</div>
       </div>
     </div>
   </section>
@@ -512,21 +391,45 @@
       <div class="section-eyebrow">Ready to Deploy</div>
       <h2 class="cta-title">See what's inside<br>your grain.</h2>
       <p class="cta-desc">Join the next generation of autonomous grain intelligence. SAR-G is ready for pilot deployment
-        in Jordanian silos.</p>
-      <button class="cta-button"><span>Deploy SAR-G</span></button>
+        in grain storage facilities worldwide.</p>
+      <form class="cta-form" id="ctaForm" style="width:100%;max-width:480px;margin:0 auto;">
+        <div class="cta-form-row" style="display:flex;gap:1.5rem;margin-bottom:0;">
+          <input type="text" id="ctaName" placeholder="Your name" required
+            style="flex:1;background:transparent;border:none;border-bottom:1px solid rgba(247,245,240,0.2);color:#fff;padding:0.75rem 0;font-family:inherit;font-size:0.95rem;outline:none;border-radius:0;width:100%;" />
+          <input type="email" id="ctaEmail" placeholder="Work email" required
+            style="flex:1;background:transparent;border:none;border-bottom:1px solid rgba(247,245,240,0.2);color:#fff;padding:0.75rem 0;font-family:inherit;font-size:0.95rem;outline:none;border-radius:0;width:100%;" />
+        </div>
+        <input type="text" id="ctaOrg" placeholder="Organization / facility" required
+          style="display:block;width:100%;background:transparent;border:none;border-bottom:1px solid rgba(247,245,240,0.2);color:#fff;padding:0.75rem 0;font-family:inherit;font-size:0.95rem;outline:none;border-radius:0;margin-bottom:2rem;box-sizing:border-box;" />
+        <button class="cta-button" type="submit"><span>Request Beta Access</span></button>
+        <p class="cta-pricing-note" style="font-size:0.8rem;opacity:0.5;margin-top:1rem;letter-spacing:0.05em;">We'll reach out within 48 hours. Pilot partnerships open for 2026.</p>
+      </form>
+
+      <div class="cta-success" id="ctaSuccess" style="display:none;text-align:center;">
+        <div class="success-icon" style="font-size:3rem;color:var(--brand-green);margin-bottom:1rem;">✓</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:0.5rem;">You're on the list.</h3>
+        <p style="opacity:0.6;">We'll be in touch within 48 hours.</p>
+      </div>
     </div>
   </section>
 
   <!-- ═══════════ FOOTER ═══════════ -->
   <footer>
     <div class="footer-left">&copy; 2026 SAR-G &middot; Silos Autonomous Robot — Grain</div>
-    <div class="footer-right">Amman, Jordan &middot; MENA</div>
+    <div class="footer-right">Jordan &middot; United States &middot; Global</div>
   </footer>
 
   <!-- ═══════════════════════════════════════════
      JAVASCRIPT
      ═══════════════════════════════════════════ -->
   <script src="script.js"></script>
+  <script>
+    document.getElementById('ctaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('ctaForm').style.display = 'none';
+      document.getElementById('ctaSuccess').style.display = 'block';
+    });
+  </script>
 
 </body>
 
