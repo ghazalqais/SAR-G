@@ -13,6 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <link rel="stylesheet" href="style.css">
+  <style>.nav-mobile-cta{display:none;}@media(max-width:768px){.nav-mobile-cta{display:block;}.nav-mobile-cta a{font-weight:400;color:var(--brand-green)!important;}}</style>
 </head>
 
 <body>
@@ -32,6 +33,7 @@
       <li><a href="#silo-section" data-section="silo-section">Heatmap</a></li>
       <li><a href="#how-it-works" data-section="how-it-works">Solution</a></li>
       <li><a href="#market" data-section="market">Market</a></li>
+      <li class="nav-mobile-cta"><a href="#cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('mobile-open');document.getElementById('navToggle').classList.remove('open');document.getElementById('nav').classList.remove('force-light');return false;">Deploy SAR-G</a></li>
     </ul>
     <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Deploy SAR-G</button>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
