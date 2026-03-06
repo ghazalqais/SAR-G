@@ -13,7 +13,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <link rel="stylesheet" href="style.css">
-  <style>.nav-mobile-cta{display:none;}@media(max-width:768px){.nav-mobile-cta{display:block;}.nav-mobile-cta a{font-weight:400;color:var(--brand-green)!important;}}</style>
+  <style>.nav-mobile-cta{display:none;}@media(max-width:768px){.nav-mobile-cta{display:block;}.nav-mobile-cta a{font-weight:400;color:var(--brand-green)!important;}}
+  .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+  .platform-card{background:rgba(247,245,240,0.04);border:1px solid rgba(247,245,240,0.08);border-radius:2px;padding:2.5rem 2rem;transition:border-color 0.3s;}
+  .platform-card:hover{border-color:rgba(247,245,240,0.18);}
+  .platform-icon{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--brand-green);letter-spacing:0.15em;margin-bottom:1.25rem;opacity:0.8;}
+  .platform-svg{width:48px;height:48px;margin-bottom:1.25rem;stroke:var(--brand-green);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0.85;}
+  .platform-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.75rem;}
+  .platform-desc{font-size:0.9rem;line-height:1.7;opacity:0.6;}
+  .platform-cta-line{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:4rem;font-size:1.15rem;letter-spacing:0.06em;opacity:0.55;flex-wrap:wrap;text-align:center;}
+  .platform-divider{color:var(--brand-green);opacity:1;font-size:1.4rem;line-height:1;}
+  @media(max-width:768px){.platform-grid{grid-template-columns:1fr;}.platform-cta-line{font-size:0.95rem;gap:0.6rem;}}</style>
 </head>
 
 <body>
@@ -32,6 +42,7 @@
       <li><a href="#problem" data-section="problem">Problem</a></li>
       <li><a href="#silo-section" data-section="silo-section">Heatmap</a></li>
       <li><a href="#how-it-works" data-section="how-it-works">Solution</a></li>
+      <li><a href="#platform" data-section="platform">Platform</a></li>
       <li><a href="#market" data-section="market">Market</a></li>
       <li class="nav-mobile-cta"><a href="#cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('mobile-open');document.getElementById('navToggle').classList.remove('open');document.getElementById('nav').classList.remove('force-light');return false;">Deploy</a></li>
     </ul>
@@ -352,6 +363,74 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- ═══════════ THE PLATFORM ═══════════ -->
+  <section id="platform">
+    <div class="section-eyebrow fade-up">Beyond the Robot</div>
+    <h2 class="section-title fade-up">The data is the product.</h2>
+    <p class="section-desc fade-up">Every SAR-G probe feeds a cloud intelligence layer — giving operators, governments, and food authorities real-time visibility into grain health across every connected silo.</p>
+
+    <div class="platform-grid fade-up">
+      <div class="platform-card">
+        <div class="platform-icon">01</div>
+        <svg class="platform-svg" viewBox="0 0 48 48">
+          <rect x="6" y="8" width="36" height="24" rx="2"/>
+          <path d="M16 32v6M32 32v6M12 38h24"/>
+          <path d="M13 24l6-7 6 4 6-9" opacity="0.5"/>
+          <circle cx="13" cy="24" r="1.5" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="19" cy="17" r="1.5" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="25" cy="21" r="1.5" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="31" cy="12" r="1.5" style="fill:var(--brand-green);stroke:none"/>
+        </svg>
+        <div class="platform-title">Operator Dashboard</div>
+        <div class="platform-desc">Live silo-by-silo heatmaps, treatment logs, alert history, and predictive spoilage risk scores. Accessible from any device.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">02</div>
+        <svg class="platform-svg" viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="4"/>
+          <circle cx="8" cy="16" r="3"/>
+          <circle cx="40" cy="16" r="3"/>
+          <circle cx="8" cy="34" r="3"/>
+          <circle cx="40" cy="34" r="3"/>
+          <circle cx="24" cy="6" r="3"/>
+          <path d="M20 24l-9-6M28 24l9-6M20 25l-9 7M28 25l9 7M24 20v-8"/>
+          <path d="M8 19v12M40 19v12" opacity="0.4"/>
+        </svg>
+        <div class="platform-title">National API</div>
+        <div class="platform-desc">Governments and food authorities connect directly to aggregate grain health data across all registered facilities. Real-time national reserve visibility.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">03</div>
+        <svg class="platform-svg" viewBox="0 0 48 48">
+          <path d="M6 34c4-8 6-4 9-10s4-12 9-12 5 10 9 14 6 4 9 2"/>
+          <circle cx="6" cy="34" r="2" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="15" cy="24" r="2" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="24" cy="12" r="2" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="33" cy="26" r="2" style="fill:var(--brand-green);stroke:none"/>
+          <circle cx="42" cy="36" r="2" style="fill:var(--brand-green);stroke:none"/>
+          <path d="M30 10l8-4-2 8" opacity="0.5"/>
+        </svg>
+        <div class="platform-title">Predictive Intelligence</div>
+        <div class="platform-desc">Network-wide data trains spoilage prediction models. The more silos connected, the smarter every silo gets.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-icon">04</div>
+        <svg class="platform-svg" viewBox="0 0 48 48">
+          <path d="M24 6l16 6v10c0 10-7 18-16 22C15 40 8 32 8 22V12z"/>
+          <path d="M17 24l5 5 9-10" opacity="0.9"/>
+        </svg>
+        <div class="platform-title">Cyber-Physical Security</div>
+        <div class="platform-desc">An intelligence layer over national grain reserves is also a security layer. Anomaly detection. Tamper alerts. State-level food infrastructure defense.</div>
+      </div>
+    </div>
+
+    <div class="platform-cta-line fade-up">
+      <span>One probe is silo intelligence.</span>
+      <span class="platform-divider">·</span>
+      <span>A thousand is infrastructure.</span>
+    </div>
   </section>
 
   <!-- ═══════════ PRODUCT LINE ═══════════ -->
