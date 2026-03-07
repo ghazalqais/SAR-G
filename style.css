@@ -138,6 +138,17 @@ nav.scrolled {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
 }
 
+/* Remove backdrop-filter instantly when menu opens — prevents fixed overlay being trapped in containing block */
+nav.force-light {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  /* Override 'transition: all' so backdrop-filter is removed with 0s delay (no glitch) */
+  transition: padding 0.5s cubic-bezier(0.23,1,0.32,1),
+              background 0.5s cubic-bezier(0.23,1,0.32,1),
+              box-shadow 0.5s cubic-bezier(0.23,1,0.32,1),
+              border-color 0.5s cubic-bezier(0.23,1,0.32,1) !important;
+}
+
 /* Force light mode when menu is open */
 nav.force-light .nav-logo {
   color: var(--text-primary) !important;
